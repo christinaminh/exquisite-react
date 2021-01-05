@@ -10,8 +10,8 @@ const FinalPoem = ({ isSubmitted, submissions, revealPoem }) => {
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
           {
-            submissions.map( submission => (
-              <p>{submission}</p>
+            submissions.map((submission, i) => (
+              <p key={i}>{submission}</p>
             ))
           }
         </section>
@@ -20,7 +20,6 @@ const FinalPoem = ({ isSubmitted, submissions, revealPoem }) => {
   } else {
     return (
       <div className="FinalPoem">
-
 
         <div className="FinalPoem__reveal-btn-container">
           <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" onClick={revealPoem}/>

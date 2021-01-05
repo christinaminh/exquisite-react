@@ -29,9 +29,9 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
       placeholder: 'adverb1',
     },
   ];
- 
+
   test('renders with the proper input fields and a submit button', () => {
-     // Act
+    // Act
     render(<PlayerSubmissionForm
       index={1}
       sendSubmission={() => { }}
@@ -55,8 +55,8 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
       sendSubmission={() => { }}
       fields={FIELDS}
     />);
-  
-  
+
+
     const inputFields = FIELDS.filter((item) => typeof item !== 'string');
     let index = 0;
     const letters = 'abcdefghijklmnopqrstuvwxyz';
@@ -83,7 +83,7 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
       sendSubmission={callBackFunction}
       fields={FIELDS}
     />);
-    
+
 
     // Act
     const submitBtn = screen.getByText(/Submit Line/i);
@@ -99,12 +99,12 @@ describe('Wave 1:  PlayerSubmissionForm', () => {
 
       render(<PlayerSubmissionForm
         index={index}
-        sendSubmission={() => { } }
+        sendSubmission={() => { }}
         fields={FIELDS}
       />);
 
       // Assert
-      let playerText = `Player Submission Form for Player #${ index }`
+      let playerText = `Player Submission Form for Player #${index}`
       expect(screen.getByText(new RegExp(playerText, 'i'))).toBeInTheDocument();
       // Clear the dom prior to next loop iteration
       cleanup();
