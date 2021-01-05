@@ -16,10 +16,7 @@ const Game = () => {
 
   const [currentPlayer, setCurrentPlayer] = useState(1)
   const [submissions, setSubmissions] = useState([])
-
-
-  // const [isSubmitted, setIsSubmitted] = useState(false)
-  // const [reveal, setReveal] = useState()
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
 
   const addPlayerSubmission = (submission) => {
@@ -34,9 +31,9 @@ const Game = () => {
 
   const lastSubmission = submissions[submissions.length - 1]
 
-  // const submitFinalPoem = () => {
-
-  // }
+  const revealPoem = () => {
+    setIsSubmitted(true)
+  }
 
   return (
     <div className="Game">
@@ -50,11 +47,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission submission={lastSubmission}/>
+      { (isSubmitted) || (submissions.length === 0) ? null : <RecentSubmission submission={lastSubmission}/> }
 
-      <PlayerSubmissionForm index={currentPlayer} sendSubmission={addPlayerSubmission} fields={FIELDS}/>
+      { isSubmitted ? null : <PlayerSubmissionForm index={currentPlayer} sendSubmission={addPlayerSubmission} fields={FIELDS}/> }
 
-      {/* <FinalPoem isSubmitted={true} submissions={submissions} revealPoem={setReveal}/> */}
+      <FinalPoem isSubmitted={isSubmitted} submissions={submissions} revealPoem={revealPoem}/>
 
     </div>
   );
